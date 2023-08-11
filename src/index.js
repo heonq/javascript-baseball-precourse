@@ -2,6 +2,7 @@ import { generateRandomNumbers } from '../utils/GenerateRandomNumbers.js';
 import { CONSTANTS } from '../utils/Constants.js';
 import { DOM } from '../utils/DOM.js';
 import { $ } from '../utils/index.js';
+import { Validator } from '../utils/Validator.js';
 
 export default class BaseballGame {
   #computerNumbers;
@@ -19,6 +20,18 @@ export default class BaseballGame {
 
   handleEvent() {
     $('form').addEventListener('submit', (e) => e.preventDefault());
+    DOM.submitButton.addEventListener('click', this.handleInput.bind(this));
+  }
+
+  handleInput() {
+    const input = DOM.input.value;
+    if (!Validator.validateInput(input.split(''))) return;
+    this.#userInputNumbers = DOM.input.value;
+    DOM.result.innerText = this.printResult();
+  }
+
+  printResult() {
+    return this.getResult(this.#computerNumbers.split(''), this.#userInputNumbers.split(''));
   }
 
   toggleRetryButtonDisplay() {
