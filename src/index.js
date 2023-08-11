@@ -1,17 +1,24 @@
 import { generateRandomNumbers } from '../utils/GenerateRandomNumbers.js';
 import { CONSTANTS } from '../utils/Constants.js';
 import { DOM } from '../utils/DOM.js';
+import { $ } from '../utils/index.js';
 
 export default class BaseballGame {
   #computerNumbers;
   #userInputNumbers;
 
-  constructor() {
+  start() {
     this.init();
+    this.handleEvent();
   }
+
   init() {
     this.#computerNumbers = generateRandomNumbers();
     this.toggleRetryButtonDisplay();
+  }
+
+  handleEvent() {
+    $('form').addEventListener('submit', (e) => e.preventDefault());
   }
 
   toggleRetryButtonDisplay() {
@@ -40,3 +47,6 @@ export default class BaseballGame {
 
   play(computerInputNumbers, userInputNumbers) {}
 }
+
+const baseballGame = new BaseballGame();
+baseballGame.start();
