@@ -22,6 +22,7 @@ export default class BaseballGame {
   handleEvent() {
     $('form').addEventListener('submit', (e) => e.preventDefault());
     DOM.submitButton.addEventListener('click', this.handleInput.bind(this));
+    DOM.restartButton.addEventListener('click', this.handleRestart.bind(this));
   }
 
   handleInput() {
@@ -43,6 +44,11 @@ export default class BaseballGame {
 
   printResult() {
     return this.getResult(this.#computerNumbers.split(''), this.#userInputNumbers.split(''));
+  }
+
+  handleRestart() {
+    this.init();
+    DOM.result.innerText = '';
   }
 
   toggleRetryButtonDisplay() {
