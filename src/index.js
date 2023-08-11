@@ -1,4 +1,4 @@
-import GenerateRandomNumber from '../utils/GenerateRandomNumbers.js';
+import { generateRandomNumbers } from '../utils/GenerateRandomNumbers.js';
 
 export default class BaseballGame {
   #computerNumbers;
@@ -8,7 +8,7 @@ export default class BaseballGame {
     this.init();
   }
   init() {
-    this.#computerNumbers = GenerateRandomNumbers();
+    this.#computerNumbers = generateRandomNumbers();
   }
 
   countBall(computerInputNumbers, userInputNumbers) {
