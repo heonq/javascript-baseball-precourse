@@ -1,4 +1,4 @@
-export default generateRandomNumber = () => {
+const generateRandomNumber = () => {
   let answer = [];
   while (answer.length < 3) {
     const number = MissionUtils.Random.pickNumberInRange(1, 9);
@@ -6,3 +6,5 @@ export default generateRandomNumber = () => {
   }
   return answer.join('');
 };
+
+export { generateRandomNumber };

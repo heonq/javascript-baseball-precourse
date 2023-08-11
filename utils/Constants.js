@@ -1,4 +1,4 @@
-export const CONSTANTS = Object.freeze({
+const CONSTANTS = Object.freeze({
   ball: '볼',
   strike: '스트라이크',
   nothing: '낫싱',
@@ -7,3 +7,5 @@ export const CONSTANTS = Object.freeze({
   validLength: 3,
   winStrike: 3,
 });
+
+export { CONSTANTS };
