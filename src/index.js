@@ -1,5 +1,6 @@
 import { generateRandomNumbers } from '../utils/GenerateRandomNumbers.js';
 import { CONSTANTS } from '../utils/Constants.js';
+import { DOM } from '../utils/DOM.js';
 
 export default class BaseballGame {
   #computerNumbers;
@@ -10,6 +11,11 @@ export default class BaseballGame {
   }
   init() {
     this.#computerNumbers = generateRandomNumbers();
+    this.toggleRetryButtonDisplay();
+  }
+
+  toggleRetryButtonDisplay() {
+    DOM.restartButton.style.display = DOM.restartButton.style.display !== 'none' ? 'none' : 'block';
   }
 
   countBall(computerInputNumbers, userInputNumbers) {
