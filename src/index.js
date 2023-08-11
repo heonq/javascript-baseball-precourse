@@ -3,6 +3,7 @@ import { CONSTANTS } from '../utils/Constants.js';
 import { DOM } from '../utils/DOM.js';
 import { $ } from '../utils/index.js';
 import { Validator } from '../utils/Validator.js';
+import { MESSAGE } from '../utils/Message.js';
 
 export default class BaseballGame {
   #computerNumbers;
@@ -28,6 +29,16 @@ export default class BaseballGame {
     if (!Validator.validateInput(input.split(''))) return;
     this.#userInputNumbers = DOM.input.value;
     DOM.result.innerText = this.printResult();
+    if (DOM.result.innerText === CONSTANTS.winStrike) this.handleSuccess();
+  }
+
+  handleSuccess() {
+    this.printSucess();
+    this.toggleRetryButtonDisplay();
+  }
+
+  printSucess() {
+    DOM.result.innerHTML = MESSAGE.success;
   }
 
   printResult() {

@@ -5,7 +5,7 @@ const CONSTANTS = Object.freeze({
   minNumber: 1,
   maxNumber: 9,
   validLength: 3,
-  winStrike: 3,
+  winStrike: '3스트라이크',
 });
 
 export { CONSTANTS };
