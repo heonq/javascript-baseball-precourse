@@ -8,12 +8,10 @@ import { MESSAGE } from '../utils/Message.js';
 export default class BaseballGame {
   #computerNumbers;
   #userInputNumbers;
-
   start() {
     this.init();
     this.handleEvent();
   }
-
   init() {
     this.#computerNumbers = generateRandomNumbers();
     this.toggleRetryButtonDisplay();
@@ -26,9 +24,8 @@ export default class BaseballGame {
   }
 
   handleInput() {
-    const input = DOM.input.value;
-    if (!Validator.validateInput(input.split(''))) return;
     this.#userInputNumbers = DOM.input.value;
+    if (!Validator.validateInput(this.#userInputNumbers.split(''))) return;
     DOM.result.innerText = this.printResult();
     if (DOM.result.innerText === CONSTANTS.winStrike) this.handleSuccess();
   }
@@ -37,7 +34,6 @@ export default class BaseballGame {
     this.printSucess();
     this.toggleRetryButtonDisplay();
   }
-
   printSucess() {
     DOM.result.innerHTML = MESSAGE.success;
   }
@@ -50,11 +46,9 @@ export default class BaseballGame {
     this.init();
     DOM.result.innerText = '';
   }
-
   toggleRetryButtonDisplay() {
     DOM.restartButton.style.display = DOM.restartButton.style.display !== 'none' ? 'none' : 'block';
   }
-
   countBall(computerInputNumbers, userInputNumbers) {
     return userInputNumbers.filter(
       (number, index) =>
@@ -65,7 +59,6 @@ export default class BaseballGame {
     return userInputNumbers.filter((number, index) => computerInputNumbers[index] === number)
       .length;
   }
-
   getResult(computerInputNumbers, userInputNumbers) {
     const ball = this.countBall(computerInputNumbers, userInputNumbers);
     const strike = this.countStrike(computerInputNumbers, userInputNumbers);
